@@ -1,7 +1,6 @@
 Airline Ticket Booking
 
-codebase structure
-
+- codebase structure
 - src/
   - index.js
   - models/
