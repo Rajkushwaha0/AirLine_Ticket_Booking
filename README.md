@@ -1,11 +1,11 @@
-/
+- Airline Ticket Booking
 
-    - src/
-        index.js
-        models/
-        controllers/
-        middlewares/
-        services/
-        utils/
-        config/
-    - tests
+  - src/
+    index.js
+    models/
+    controllers/
+    middlewares/
+    services/
+    utils/
+    config/
+  - tests
