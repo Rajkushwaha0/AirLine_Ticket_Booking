@@ -33,6 +33,7 @@
 ```
 
 - once you have added your db config as listed above, go the src folder from terminal and execute `npm sequelize db:create`
+- For tables you have to do only `npx sequelize db:migrate` in src directory as Models and Migration are present with the schemas of table.
 
 ## DB Design(Tables)
 
@@ -42,6 +43,7 @@
 - City
 
 - Association of tables
+
   - A flight belongs to an airplane but one airplane can be used for multiple flights
   - A city has many airports but one airport belongs to a city
   - A airport can have many flights but a flight belongs to single airport
