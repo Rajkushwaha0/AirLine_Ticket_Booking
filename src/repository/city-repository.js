@@ -27,20 +27,25 @@ class CityRepository {
 
   async updateCity(cityId, data) {
     try {
-      const city = await City.update(data, {
-        where: {
-          id: cityId,
-        },
-      });
+      //this also works but does not return city data so you must use return true;
+      // const city = await City.update(data, {
+      //   where: {
+      //     id: cityId,
+      //   },
+      // });
+
+      const city = await City.findByPk(cityId);
+      city.name = data.name;
+      await city.save();
       return city;
     } catch (error) {
       console.log("something went wrong in repository log");
       throw { error };
     }
   }
-  async getCity({ cityId }) {
+  async getCity(cityId) {
     try {
-      const city = await City.findByPK({ cityId });
+      const city = await City.findByPk(cityId);
       return city;
     } catch (error) {
       console.log("something went wrong in repository log");
