@@ -25,9 +25,12 @@ class CityRepository {
     }
   }
 
-  async updateCity(cityId, data) {
+  async updateCity(
+    cityId,
+    data // data->  {name : updated_name}
+  ) {
     try {
-      //this also works but does not return city data so you must use return true;
+      //this also works but does not return updated city object;
       // const city = await City.update(data, {
       //   where: {
       //     id: cityId,
@@ -47,6 +50,16 @@ class CityRepository {
     try {
       const city = await City.findByPk(cityId);
       return city;
+    } catch (error) {
+      console.log("something went wrong in repository log");
+      throw { error };
+    }
+  }
+
+  async getAllCities() {
+    try {
+      const cities = await City.findAll();
+      return cities;
     } catch (error) {
       console.log("something went wrong in repository log");
       throw { error };
