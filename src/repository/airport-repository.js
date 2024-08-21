@@ -3,22 +3,22 @@ const { Airport } = require("../models/index");
 class AirportRepository {
   async createAirport({ name, address, city_id }) {
     try {
-      const city = await Airport.create({
+      const airport = await Airport.create({
         name,
         address,
         city_id,
       });
-      return city;
+      return airport;
     } catch (error) {
       console.log("something went wrong in airport repository log");
       throw { error };
     }
   }
-  async deleteAirport(cityId) {
+  async deleteAirport(airportId) {
     try {
       await Airport.destroy({
         where: {
-          id: cityId,
+          id: airportId,
         },
       });
       return true;
@@ -27,9 +27,9 @@ class AirportRepository {
       throw { error };
     }
   }
-  async updateAirport(cityId, data) {
+  async updateAirport(airportId, data) {
     try {
-      const airport = await Airport.findByPk(cityId);
+      const airport = await Airport.findByPk(airportId);
       if (data.name != null) airport.name = data.name;
       if (data.city_id != null) airport.city_id = data.city_id;
       if (data.address != null) airport.address = data.address;
@@ -40,10 +40,10 @@ class AirportRepository {
       throw { error };
     }
   }
-  async getAirport(cityId) {
+  async getAirport(airportId) {
     try {
-      const city = await Airport.findByPk(cityId);
-      return city;
+      const airport = await Airport.findByPk(airportId);
+      return airport;
     } catch (error) {
       console.log("something went wrong in airport repository log");
       throw { error };
