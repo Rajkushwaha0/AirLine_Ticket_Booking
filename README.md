@@ -52,4 +52,12 @@
 
 ### City -> id,name,createdAt,updatedAt
 
+```
+npx sequelize model:generate --name City --attribute name:String
+```
+
 ### Airport -> id,name,address,city_id,createdAt,updatedAt
+
+```
+npx sequelize model:generate --name Airport --attribute name:String,Address:String,city_id:Integer
+```
