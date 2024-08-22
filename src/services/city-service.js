@@ -10,7 +10,17 @@ class CityService {
       const city = await this.cityRepository.createCity(data);
       return city;
     } catch (error) {
-      console.log("something went wrong at service layer");
+      console.log("something went wrong at city service layer");
+      throw { error };
+    }
+  }
+
+  async createManyCity(data) {
+    try {
+      const city = await this.cityRepository.createManyCity(data);
+      return city;
+    } catch (error) {
+      console.log("something went wrong at city service layer");
       throw { error };
     }
   }
@@ -20,7 +30,7 @@ class CityService {
       const response = await this.cityRepository.deleteCity(cityId);
       return response;
     } catch (error) {
-      console.log("something went wrong at service layer");
+      console.log("something went wrong at city service layer");
       throw { error };
     }
   }
@@ -30,7 +40,7 @@ class CityService {
       const city = await this.cityRepository.updateCity(cityId, data);
       return city;
     } catch (error) {
-      console.log("something went wrong at service layer");
+      console.log("something went wrong at city service layer");
       throw { error };
     }
   }
@@ -40,7 +50,7 @@ class CityService {
       const city = await this.cityRepository.getCity(cityId);
       return city;
     } catch (error) {
-      console.log("something went wrong at service layer");
+      console.log("something went wrong at city service layer");
       throw { error };
     }
   }
@@ -52,7 +62,7 @@ class CityService {
       });
       return cities;
     } catch (error) {
-      console.log("something went wrong at service layer");
+      console.log("something went wrong at city service layer");
       throw { error };
     }
   }
@@ -62,7 +72,7 @@ class CityService {
       const airports = await this.cityRepository.getAllAirportByCity(cityId);
       return airports;
     } catch (error) {
-      console.log("something went wrong at service layer");
+      console.log("something went wrong at city service layer");
       throw { error };
     }
   }

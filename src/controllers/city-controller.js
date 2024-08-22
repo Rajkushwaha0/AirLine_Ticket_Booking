@@ -26,6 +26,28 @@ const create = async (req, res) => {
   }
 };
 
+//Create Many in One Go
+const createMany = async (req, res) => {
+  try {
+    // console.log(req.body);
+    const city = await cityService.createManyCity(req.body);
+    return res.status(201).json({
+      data: city,
+      success: true,
+      message: "Successfully created many city.",
+      err: {},
+    });
+  } catch (error) {
+    console.log("Something went wrong in city controller", error);
+    return res.status(500).json({
+      data: {},
+      success: false,
+      message: "Failed, Not created all city",
+      err: error,
+    });
+  }
+};
+
 /**
  * DELETE
  * -> city/:id
@@ -120,11 +142,11 @@ const getAll = async (req, res) => {
 
 const getAllAirportByCity = async (req, res) => {
   try {
-    const airports = await cityService.getAllAirportByCity(req.params.id);
+    const airports = await cityService.getAllAirportByCity(req.params.cityId);
     return res.status(201).json({
       data: airports,
       success: true,
-      message: "Successfully fetched all cities.",
+      message: "Successfully fetched all airports associated to city.",
       err: {},
     });
   } catch (error) {
@@ -132,9 +154,17 @@ const getAllAirportByCity = async (req, res) => {
     return res.status(500).json({
       data: {},
       success: false,
-      message: "Failed, Not get a city data",
+      message: "Failed, Not get a airport data by city name",
       err: error,
     });
   }
 };
-module.exports = { create, destroy, update, get, getAll, getAllAirportByCity };
+module.exports = {
+  create,
+  destroy,
+  update,
+  get,
+  getAll,
+  getAllAirportByCity,
+  createMany,
+};
