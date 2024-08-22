@@ -61,3 +61,23 @@ npx sequelize model:generate --name City --attribute name:String
 ```
 npx sequelize model:generate --name Airport --attribute name:String,Address:String,city_id:Integer
 ```
+
+### Airplane -> id,modelNumber,capacity,createdAt,updatedAt
+
+```
+npx sequelize model:generate --name Airplane --attribute modelNumber:String,capacity:Integer
+```
+
+## How to seed data in sequelize
+
+- go to src directory and run this command
+
+```
+npx sequelize seed:generate --name add-airport
+```
+
+- to complete the seeding of bulk data
+
+```
+npx sequelize db:seed:all // (or particular file name)
+```
