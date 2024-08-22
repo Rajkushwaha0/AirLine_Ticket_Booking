@@ -8,6 +8,7 @@ router.post("/city", CityController.create);
 router.delete("/city/:id", CityController.destroy);
 router.get("/city/:id", CityController.get);
 router.get("/city", CityController.getAll);
+router.get("/city/airports/:id", CityController.getAllAirportByCity);
 router.patch("/city/:id", CityController.update);
 
 //airport

@@ -117,4 +117,24 @@ const getAll = async (req, res) => {
     });
   }
 };
-module.exports = { create, destroy, update, get, getAll };
+
+const getAllAirportByCity = async (req, res) => {
+  try {
+    const airports = await cityService.getAllAirportByCity(req.params.id);
+    return res.status(201).json({
+      data: airports,
+      success: true,
+      message: "Successfully fetched all cities.",
+      err: {},
+    });
+  } catch (error) {
+    console.log("Something went wrong in city controller", error);
+    return res.status(500).json({
+      data: {},
+      success: false,
+      message: "Failed, Not get a city data",
+      err: error,
+    });
+  }
+};
+module.exports = { create, destroy, update, get, getAll, getAllAirportByCity };

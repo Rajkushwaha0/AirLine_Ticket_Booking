@@ -1,5 +1,5 @@
 const { Op } = require("sequelize");
-const { City } = require("../models/index");
+const { City, Airport } = require("../models/index");
 
 class CityRepository {
   async createCity({ name }) {
@@ -72,7 +72,25 @@ class CityRepository {
       const cities = await City.findAll();
       return cities;
     } catch (error) {
-      console.log("something went wrong in repository log");
+      console.log("something went wrong in city repository log");
+      throw { error };
+    }
+  }
+
+  async getAllAirportByCity(cityId) {
+    try {
+      const city = await City.findOne({
+        where: { id: cityId },
+        include: [
+          {
+            model: Airport,
+            as: "Airports",
+          },
+        ],
+      });
+      return city.Airports;
+    } catch (error) {
+      console.log("something went wrong in city repository log");
       throw { error };
     }
   }
