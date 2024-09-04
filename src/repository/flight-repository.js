@@ -2,6 +2,7 @@ const { Flights } = require("../models/index");
 const { Op } = require("sequelize");
 class FlightRepository {
   #createFilter(data) {
+    //private function
     let filter = {};
     if (data.arrivalAirportId) {
       filter.arrivalAirportId = data.arrivalAirportId;
